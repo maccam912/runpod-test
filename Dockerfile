@@ -2,7 +2,7 @@ from python:3.11.1-buster
 
 WORKDIR /
 
-RUN pip install runpod torch transformers accelerate bitsandbytes
+RUN pip install runpod torch transformers accelerate bitsandbytes sentencepiece
 
 ADD preload.py .
 RUN python preload.py
