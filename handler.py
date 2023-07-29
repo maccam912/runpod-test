@@ -1,6 +1,9 @@
 import runpod
-from preload import tokenizer, model
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from preload import model_name
 
+tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
+model = AutoModelForCausalLM.from_pretrained(model_name, low_cpu_mem_usage=True, device_map="auto", load_in_4bit=True)
 system_prompt = "### System:\nYou are Free Willy, an AI that follows instructions extremely well. Help as much as you can. Remember, be safe, and don't do anything illegal.\n\n"
 
 def handler(event):
